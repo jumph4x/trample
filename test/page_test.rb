@@ -39,6 +39,11 @@ class PageTest < Test::Unit::TestCase
     should "interpolate parameters into the url" do
       assert_equal "http://google.com/1", @page.url
     end
+
+    should "not interpolate the port number if there is one" do
+      page = Trample::Page.new(:post, "http://localhost:3000/:id", lambda { { :id => 1, :username => "joetheuser" } })
+      assert_equal "http://localhost:3000/1", page.url
+    end
   end
 
   context "Block based parameters for GET requests" do
@@ -53,6 +58,11 @@ class PageTest < Test::Unit::TestCase
     should "interpolate a different parameter each time" do
       page = Trample::Page.new(:get, "http://mysite.com/somethings/:id", lambda { {:id => rand(10)} })
       assert_not_equal page.url, page.url
+    end
+
+    should "not interpolate the port number if there is one" do
+      page = Trample::Page.new(:get, "http://mysite.com:8080/somethings/:id", lambda { {:id => 5} })
+      assert_equal "http://mysite.com:8080/somethings/5", page.url
     end
   end
 end
