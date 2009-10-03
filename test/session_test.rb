@@ -77,5 +77,26 @@ class SessionTest < Test::Unit::TestCase
       Trample::Session.new(@config).trample
     end
   end
+
+  context "Testing a site with forgery protection enabled" do
+    should "pass the authenticity token in the login POST params" do
+      @config = Trample::Configuration.new do
+        iterations 1
+        login do
+          get "http://google.com"
+          post "http://google.com/login" do
+            {:user => "xyz", :password => "swordfish"}
+          end
+        end
+      end
+      stub(RestClient).get(anything, anything) do
+        response = "<input type='hidden' value='abc' name='authenticity_token'/>"
+        stub(response).cookies { {} }
+        stub(response).code { 200 }
+      end
+      mock_post("http://google.com/login", :payload => {:user => "xyz", :password => "swordfish", :authenticity_token => 'abc'}, :times => 1)
+      Trample::Session.new(@config).trample
+    end
+  end
 end
 

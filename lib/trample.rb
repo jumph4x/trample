@@ -1,6 +1,7 @@
 gem 'sevenwire-rest-client'
 require 'log4r'
 require 'rest_client'
+require 'hpricot'
 
 module Trample
   autoload :Configuration, File.dirname(__FILE__) + "/trample/configuration"

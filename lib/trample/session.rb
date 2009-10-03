@@ -40,7 +40,17 @@ module Trample
       end
 
       def post(page)
-        RestClient.post(page.url, page.parameters, :cookies => cookies)
+        params = page.parameters
+        if authenticity_token = parse_authenticity_token(@last_response)
+          params.merge!(:authenticity_token => authenticity_token)
+        end
+        RestClient.post(page.url, params, :cookies => cookies)
+      end
+
+      def parse_authenticity_token(html)
+        return nil if html.nil?
+        input = Hpricot(html).at("input[@name='authenticity_token']")
+        input.nil? ? nil : input['value']
       end
   end
 end
