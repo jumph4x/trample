@@ -12,7 +12,7 @@ module Trample
     end
 
     def trample
-      hit @config.login unless @config.login.nil?
+      @config.login.each {|page| hit page} unless @config.login.empty?
       @config.iterations.times do
         @config.pages.each do |p|
           hit p

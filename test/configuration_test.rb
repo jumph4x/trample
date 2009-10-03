@@ -13,6 +13,7 @@ class ConfigurationTest < Test::Unit::TestCase
         post "http://google.com/", {:q => "something"}
         post "http://google.com/", &@params_proc
         login do
+          get "http://google.com"
           post "http://google.com/login" do
             { :q => "whatever" }
           end
@@ -46,9 +47,12 @@ class ConfigurationTest < Test::Unit::TestCase
       assert_equal expected, @config.pages[2]
     end
 
+    should "support a login parameter which contains pages to hit for authentication" do
+      assert_equal ["http://google.com", "http://google.com/login"], @config.login.map{|page| page.url}
+    end
+
     should "support a login parameter which contains a page to hit with params" do
-      assert_equal "http://google.com/login", @config.login.url
-      assert_equal({:q => "whatever"}, @config.login.parameters)
+      assert_equal({:q => "whatever"}, @config.login.last.parameters)
     end
 
     should "be equal if all the objects are the same" do

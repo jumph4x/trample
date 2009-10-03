@@ -26,12 +26,14 @@ module Trample
     end
 
     def login
+      pages_before = @pages.size
       if block_given?
         yield
-        @login = pages.pop
+        pages_added = @pages.size - pages_before
+        @login = pages.slice! pages_before, pages_added
       end
 
-      @login
+      @login ||= []
     end
 
     def ==(other)
