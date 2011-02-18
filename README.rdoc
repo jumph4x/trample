@@ -31,6 +31,12 @@ Trample uses a ruby DSL for configuration.
     end
   end
 
+
+= Randomizer
+ ramdomizer builds various strings to POST into forms to load test data
+
+
+
 The above configuration will start 5 (concurrency) sessions by logging in as a random user at the url in the login block. Then, it'll hit the two urls underneath it 10 (iterations) times during each session.
 
 To run trample, save your configuration somewhere and run:
