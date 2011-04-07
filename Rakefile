@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "trample"
-    gem.summary = %Q{TODO}
+    gem.summary = 'Decent load simulator'
     gem.email = "james@giraffesoft.ca"
     gem.homepage = "http://github.com/giraffesoft/trample"
     gem.authors = ["James Golick"]

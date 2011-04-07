@@ -2,7 +2,7 @@ gem 'sevenwire-rest-client'
 require 'log4r'
 require 'rest_client'
 require 'hpricot'
-require '/Users/jfraley/Documents/dev/spatial/tools/trample/lib/trample/randomizer.rb'
+require 'trample/randomizer.rb'
 
 module Trample
   autoload :Configuration, File.dirname(__FILE__) + "/trample/configuration"
