@@ -10,6 +10,14 @@ Trample allows you to provide parameter values inside of a block (a lambda funct
 
 That way, you can have trample log in as several different users and request different data in each session.
 
+= Installation
+
+git clone git://github.com/jumph4x/trample.git
+cd trample/
+gem install jeweler
+gem build trample.gemspec
+gem install trample-0.1.0.gem
+
 = How To
 
 Trample uses a ruby DSL for configuration.
