@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/giraffesoft/trample}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.6.2}
-  s.summary = %q{TODO}
+  s.summary = "Bringing back James Golick's stress testing tool"
   s.test_files = [
     "test/cli_test.rb",
     "test/configuration_test.rb",
