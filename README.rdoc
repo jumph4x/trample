@@ -22,7 +22,7 @@ gem build trample.gemspec
 
 gem install trample-0.1.0.gem
 
-gem install sevenwire-rest-client -s http://gems.github.com
+gem install sevenwire-rest-client --source http://gems.github.com
 
 gem install log4r
 
