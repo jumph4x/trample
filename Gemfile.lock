@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    trample (0.1.1)
+      log4r
+      rest-client
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    log4r (1.1.10)
+    mime-types (1.25)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  trample!

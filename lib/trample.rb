@@ -1,4 +1,3 @@
-gem 'sevenwire-rest-client'
 require 'log4r'
 require 'rest_client'
 require 'hpricot'
